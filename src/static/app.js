@@ -903,6 +903,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function shareOnTwitter(text, url) {
+    // Twitter (X) share URL - using twitter.com as it still works and redirects properly
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank', 'width=600,height=400');
   }
@@ -912,7 +913,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
     const link = document.createElement('a');
     link.href = mailtoUrl;
+    link.style.display = 'none';
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   }
 
   // Expose filter functions to window for future UI control
