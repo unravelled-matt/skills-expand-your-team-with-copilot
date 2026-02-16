@@ -910,7 +910,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function shareViaEmail(subject, body, url) {
     const emailBody = `${body}\n\nLearn more: ${url}`;
     const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-    window.location.href = mailtoUrl;
+    const link = document.createElement('a');
+    link.href = mailtoUrl;
+    link.click();
   }
 
   // Expose filter functions to window for future UI control
